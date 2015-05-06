@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.AllocateRoom>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Room Allocation</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Allocate Room List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Allocate Room List</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Code
+                    </th>
+                    <th>
+                        Room
+                    </th>
+                    <th>
+                        Day
+                    </th>
+                    <th>
+                        Starting Time
+                    </th>
+                    <th>
+                        Ending Time
+                    </th>
+       
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.CourseCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Room.RoomNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Day.DayName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartingTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndingTime)
+                        </td>
+       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

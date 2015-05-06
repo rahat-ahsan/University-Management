@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Enrollment>
+
+@{
+    ViewBag.Title = "Enrolled Student List";
+}
+
+<<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Enrolled Student List</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Enrolled Student List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Enrolled Student List</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student.StudentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EnrollmentDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model=>model.Course.CourseCode)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.CourseName)
+                        </td>
+        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

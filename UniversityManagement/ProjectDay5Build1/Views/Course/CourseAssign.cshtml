@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "CourseAssign";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Course Assign to Teacher</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Course", "Index", "Course") <span class="divider">/</span></li>
+                <li class="active">Add New Course</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h3>Course Assign to Teacher</h3>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal well" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Assign Course To Teacher</legend>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select Department</label>
+                    <div class="controls">
+                        @Html.DropDownList("DepartmentId", "Select a Department")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select Teacher</label>
+                    <div class="controls">
+                        @Html.Partial("_Teacher")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                @Html.Partial("_TeacherDetails")
+                
+                <div class="control-group">
+                    <label class="control-label" >Select Course</label>
+                    <div class="controls">
+                         @Html.Partial("_Course")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                @Html.Partial("_CourseDetails")
+                
+                <div class="form-actions">
+                    <button id="AssignCourseButton" type="submit" class="btn btn-primary">Assign Course</button>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $('#AssignCourseButton').click(function () {
+            var val1 = parseFloat($('#TeacherRemainingCredit').val());
+            var val2 = parseFloat($('#CourseCredit').val());
+            var val = val1 - val2;
+
+            if (val < 0) {
+                
+                if (confirm("This assignment will create the overflow of maximum credit assignment. Are You Sure to Proceed ? ")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#DepartmentId').change(function () {
+            
+            $('#TeacherCreditToBeTaken').val('');
+            $('#TeacherRemainingCredit').val('');
+            $('#CourseName').val('');
+            $('#CourseCode').val('');
+            
+            var id = $('#DepartmentId :selected').val();
+            $('#TeacherId').load('@Url.Action("SelectTeacherFromDepartment")', { departmentId: id });
+            $('#CourseId').load('@Url.Action("SelectCourseFromDepartment")', { departmentId: id });
+        });
+        $('#TeacherId').change(function () {
+            $('#CourseName').val('');
+            $('#CourseCode').val('');
+            
+            var id = $('#TeacherId :selected').val();
+            $('#TeacherDetails').load('@Url.Action("GetTeacherDetails")', { teacherId: id });
+        });
+        $('#CourseId').change(function() {
+            var id = $('#CourseId :selected').val();
+            $('#CourseDetails').load('@Url.Action("GetCourseDetails")', { courseId: id });
+        });
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

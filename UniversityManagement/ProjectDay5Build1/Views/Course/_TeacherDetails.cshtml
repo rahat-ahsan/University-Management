@@ -1,0 +1,15 @@
+﻿@model ProjectDay5Build1.Models.Teacher
+
+<div class="control-group" id="TeacherDetails">
+    <label class="control-label" >Credit To Be Taken</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.TeacherCreditToBeTaken,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+
+    <label class="control-label" >Remaining Credit</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.TeacherRemainingCredit,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+</div>

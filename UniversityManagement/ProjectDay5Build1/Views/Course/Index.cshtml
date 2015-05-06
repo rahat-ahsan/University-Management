@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Course>
+
+@{
+    ViewBag.Title = "Course";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Course</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Course List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Course List</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CourseCredit)
+                    </th>
+                    <th>
+                        Department
+                    </th>
+                    <th>
+                        Semester
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseCredit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Semester.SemesterName)
+                        </td>
+        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

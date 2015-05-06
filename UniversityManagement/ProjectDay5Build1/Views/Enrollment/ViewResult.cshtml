@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Enrollment>
+@{
+    ViewBag.Title = "ViewResult";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>View Result</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Enroll","Index", "Enrollment") <span class="divider">/</span></li>
+                <li class="active">View Result</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "well form-search" }))
+        {
+            <h3>Select a Student</h3>
+            @Html.DropDownList("StudentId", "Select a Student")
+            <button type="submit" class="btn btn-info">View Result</button>
+        }
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span10">
+        <h2> Student Basic Information</h2>
+        <table class="table table-bordered table-striped table-hover">
+          
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> Name</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.StudentName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.StudentEmail)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Department Name</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Department.DepartmentName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>   
+                    <td>
+                        @using (Html.BeginForm("ViewPdfResult","Enrollment",FormMethod.Post))
+                        {   
+                            <div>
+                                @Html.Hidden("studentId", item.StudentId)
+                                <input type="submit" value="Get PDF"/>
+                            </div>
+                        } 
+                    </td>
+                </tr>
+                break;
+            }
+        </table>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="span10">
+        <h2> Student Result</h2>
+        <table class="table table-bordered table-striped table-hover">
+
+            <tr>
+                <th> Course Code</th><th>Name</th><th>Grade</th>
+            </tr>
+    
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem=>item.Course.CourseCode)</td>
+                    <td>@Html.DisplayFor(modelItem=>item.Course.CourseName)</td>
+                    <td>@Html.DisplayFor(modelItem=>item.Grade.GradeCode)</td>
+                </tr> 
+            }
+        </table>
+
+    </div>
+</div>

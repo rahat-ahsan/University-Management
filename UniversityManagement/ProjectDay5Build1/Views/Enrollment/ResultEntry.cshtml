@@ -1,0 +1,126 @@
+﻿@model ProjectDay5Build1.Models.Enrollment
+@{
+    ViewBag.Title = "Result Entry";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Enroll New Course</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Enrollment", "Index", "Enrollment") <span class="divider">/</span></li>
+                <li class="active">Enroll a Course</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Result Entry</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Enrollment", "Index", "Enrollment") <span class="divider">/</span></li>
+                <li class="active">Enroll a Course</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal well" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select a Student</label>
+                    <div class="controls">
+                        @Html.DropDownList("StudentId", "Select a student")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                @Html.Partial("_StudentDetails")
+                
+                <div class="control-group">
+                    <label class="control-label" >Select Course</label>
+                    <div class="controls">
+                        @Html.Partial("_Course")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select a Grade</label>
+                    <div class="controls">
+                        @Html.DropDownList("GradeId", "Select a Grade")
+                        @Html.ValidationMessageFor(model=>model.GradeId)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                
+                <div class="form-actions">
+                    <button id="AssignCourseButton" type="submit" class="btn btn-primary">Save Grade</button>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#StudentId').change(function () {
+            var id = $('#StudentId :selected').val();
+            $('#CourseId').load('@Url.Action("SelectCoursesOfStudent")', { studentId: id });
+            $('#StudentDetails').load('@Url.Action("GetStudentDetails")', { studentId: id });
+        });
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

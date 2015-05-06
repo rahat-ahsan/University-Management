@@ -1,0 +1,83 @@
+﻿@model ProjectDay5Build1.Models.Department
+
+@{
+    ViewBag.Title = "Add New Department";
+}
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Department</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Department", "Index", "Department") <span class="divider">/</span></li>
+                <li class="active">Add New Department</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2>Add New Department</h2>
+    </div>
+</div>
+
+@if (ViewBag.Message != null && ViewBag.Message != "")
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="span10">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal well" }))
+    {
+        @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Add New Department</legend>
+                
+                <div class="control-group">
+                    <label class="control-label" >Code of Department</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.DepartmentCode,new {@class="input-xlarge", @id="departmentCode"})
+                        @Html.ValidationMessageFor(model => model.DepartmentCode)
+                        <p class="help-block">Code must be unique</p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Name of Department</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.DepartmentName,new {@class="input-xlarge", @id="departmentName"})
+                        @Html.ValidationMessageFor(model => model.DepartmentName)
+                        <p class="help-block">Name must be unique</p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add New Department</button>
+                 </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

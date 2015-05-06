@@ -1,0 +1,19 @@
+﻿@model ProjectDay5Build1.Models.Course
+
+<div class="control-group" id="CourseDetails">
+    <label class="control-label" >Course Code</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.CourseCode,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+    @*</div>
+
+<div class="control-group" id="CourseDetails">*@
+    <label class="control-label" >Course Name</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.CourseName,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+</div>
+
+@Html.HiddenFor(model=>model.CourseCredit)

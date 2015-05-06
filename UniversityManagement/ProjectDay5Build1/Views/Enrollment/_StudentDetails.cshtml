@@ -1,0 +1,22 @@
+﻿@model ProjectDay5Build1.Models.Student
+
+<div class="control-group" id="StudentDetails">
+    <label class="control-label" >Student Name</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.StudentName,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+
+    <label class="control-label" >Student Email</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.StudentEmail, new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+    
+    <label class="control-label" >Department Name</label>
+    <div class="controls">
+        @Html.EditorFor(model => model.Department.DepartmentName,new {@class="input-xlarge",disabled ="disabled", @readonly ="readonly"})
+        <p class="help-block"></p>
+    </div>
+</div>
+           

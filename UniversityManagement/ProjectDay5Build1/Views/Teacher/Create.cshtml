@@ -1,0 +1,124 @@
+﻿@model ProjectDay5Build1.Models.Teacher
+
+@{
+    ViewBag.Title = "Add New Teacher";
+}
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Add New Teacher</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Add New Teacher</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h3>Add New Teacher</h3>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal well" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Add New Course</legend>
+                
+                <div class="control-group">
+                    <label class="control-label" >Teacher Name</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TeacherName,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.TeacherName)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Teacher Email</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TeacherEmail,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.TeacherEmail)
+                        <p class="help-block">Name must be unique</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" >Teacher Contact No</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TeacherContactNo,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.TeacherContactNo)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Address </label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TeacherAddress,new {@class="input-xlarge", @row="3"})
+                        @Html.ValidationMessageFor(model => model.TeacherAddress)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Credit To be Taken</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.TeacherCreditToBeTaken,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.TeacherCreditToBeTaken)
+                        <p class="help-block">Name must be a positive integer</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" >Select Designation</label>
+                    <div class="controls">
+                        @Html.DropDownList("DesignationId", "Select a Designation")
+                        @Html.ValidationMessageFor(model => model.DesignationId)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" >Select Department</label>
+                    <div class="controls">
+                        @Html.DropDownList("DepartmentId", "Select a Department")
+                        @Html.ValidationMessageFor(model => model.DepartmentId)
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add New Teacher</button>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

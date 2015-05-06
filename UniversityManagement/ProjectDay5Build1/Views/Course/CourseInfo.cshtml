@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Course>
+@{
+    ViewBag.Title = "CourseInfo";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Course Information</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Course","Index", "Course") <span class="divider">/</span></li>
+                <li class="active">Course Information</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "well form-search" }))
+        {
+            <h3>Select Department</h3>
+            @Html.DropDownList("DepartmentId", string.Empty)
+            <button type="submit" class="btn btn-info">Show</button>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Course Information</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name/Title</th>
+                    <th>Semester</th>
+                    <th>Assigned To</th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach (var course in Model)
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => course.CourseCode)</td>
+                        <td> @Html.DisplayFor(modelItem => course.CourseName)</td>
+                        <td> @Html.DisplayFor(modelItem => course.Semester.SemesterName)</td>
+                        <td>
+                            @if (course.Teacher == null)
+                            {
+                                @Html.Label("Yet not assigned")
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem =>course.Teacher.TeacherName)
+                            }
+                        </td>
+                    </tr>
+                  
+                }
+                  
+            </tbody>
+        </table>
+           
+    </div>
+</div>

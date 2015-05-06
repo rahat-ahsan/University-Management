@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Department>
+
+@{
+    ViewBag.Title = "Department";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Department</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Department List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="span10">
+        <h2> Department List</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartmentCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartmentName)
+                    </th>
+        
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentName)
+                        </td>
+        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

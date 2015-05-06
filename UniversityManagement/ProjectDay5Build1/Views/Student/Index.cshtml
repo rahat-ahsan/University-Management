@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Student List</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Student List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Student List</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentContactNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentRegistrationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentAddress)
+                    </th>
+                    <th>
+                        Student Reg No.
+                    </th>
+                    <th>
+                        Dept.
+                    </th>
+        
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentContactNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentRegistrationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentRegistrationNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
+                        </td>
+        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

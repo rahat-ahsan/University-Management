@@ -1,0 +1,117 @@
+﻿@model ProjectDay5Build1.Models.AllocateRoom
+
+@{
+    ViewBag.Title = "Allocate a Class Room";
+}
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Allocate New Room</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Allocate Room", "Index", "AllocateRoom") <span class="divider">/</span></li>
+                <li class="active">Enroll a Course</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span10">
+        <h3>Allocate new room</h3>
+    </div>
+</div>
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.ErrorMessage
+            </div>
+        </div>
+    </div>
+}
+@if (ViewBag.OverlappingMessage != null)
+{
+    <div class="row">
+        <div class="span10">
+            <div class=" alert alert-error">
+                <a class="close">&times;</a>
+                <strong>Error</strong> @ViewBag.OverlappingMessage
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal well" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+               
+                <div class="control-group">
+                    <label class="control-label" >Select a Course</label>
+                    <div class="controls">
+                        @Html.DropDownList("CourseId", "Select a course")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select a Room</label>
+                    <div class="controls">
+                        @Html.DropDownList("RoomId", "Select a Room")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" >Select a Day</label>
+                    <div class="controls">
+                        @Html.DropDownList("DayId", "Select a Day")
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" >Starting Time</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.StartingTime,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.StartingTime)
+                        <p class="help-block">format: 24hr and hh.mm i.e: 15.50 </p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" >Ending Time</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.EndingTime,new {@class="input-xlarge"})
+                        @Html.ValidationMessageFor(model => model.EndingTime)
+                        <p class="help-block">format: 24hr and hh.mm .i.e: 15.50 </p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="AssignCourseButton" type="submit" class="btn btn-primary">Allocate Room</button>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,66 @@
+﻿@using ProjectDay5Build1.Models
+@{
+    ViewBag.Title = "Class Schedule";
+    List<string> code = ViewBag.CourseCode;
+    List<string> name = ViewBag.CourseName;
+    List<string> schedules = ViewBag.Schedules; 
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Class Schedule</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li>@Html.ActionLink("Allocate Room","Index", "AllocateRoom") <span class="divider">/</span></li>
+                <li class="active">Class Schedule</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "well form-search" }))
+        {
+            <h3>Select Department</h3>
+            @Html.DropDownList("DepartmentId", string.Empty)
+            <button type="submit" class="btn btn-info">Get Schedule</button>
+        }
+    </div>
+</div>
+
+
+
+<div class="row">
+<div class="span10">
+    <h2> Class Schedule</h2>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Schedule Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0, j = code.Count; i < j; i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem=>code[i])</td>
+                    <td>@Html.DisplayFor(modelItem=>name[i])</td>
+                    <td>@Html.DisplayFor(modelItem=>schedules[i])</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+</div>
+

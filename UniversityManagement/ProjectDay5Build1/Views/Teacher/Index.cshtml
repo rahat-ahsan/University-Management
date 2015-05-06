@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Teacher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header" >
+    
+    <div class="row">
+        <div class="span12">
+            <h1>Teacher</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span10">
+            <ul class="breadcrumb">
+                <li>@Html.ActionLink("Home","Index", "Home") <span class="divider">/</span></li>
+                <li class="active">Teacher List</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10">
+        <h2> Teacher List</h2>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Contact No
+                </th>
+                <th>
+                    Credit 
+                </th>
+                <th>
+                    Rem. Credit
+                </th>
+                <th>
+                    Designation
+                </th>
+                <th>
+                    Department
+                </th>
+        
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherContactNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherCreditToBeTaken)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherRemainingCredit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Designation.DesignationName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
+                    </td>
+       
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    </div>
+</div>
+

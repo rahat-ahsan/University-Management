@@ -1,0 +1,71 @@
+﻿@model ProjectDay5Build1.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Teacher</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherContactNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherContactNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherCreditToBeTaken)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherCreditToBeTaken)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeacherRemainingCredit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeacherRemainingCredit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Designation.DesignationName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Designation.DesignationName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DepartmentCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DepartmentCode)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TeacherId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

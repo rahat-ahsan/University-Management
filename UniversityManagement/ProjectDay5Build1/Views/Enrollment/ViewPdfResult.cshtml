@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ProjectDay5Build1.Models.Enrollment>
+@{
+    Layout = null;
+}
+
+<itext creationdate="@DateTime.Now.ToString()" producer="RazorPDF" red="127" green="127" blue="127">
+    <paragraph leading="18.0" font="Arial" align="Default">
+        <chunk size="30.0" >            University of Moder Desh</chunk>
+        <newline />
+        <chunk>                                                Mohakhali, Puran Dhaka, Bangladesh </chunk>
+        <newline />
+        <chunk>                                    Telephone: +1000007 and Email: info@moderdesh.edu </chunk>
+        <newline />
+        <chunk>----------------------------------------------------------------------------------------------------------------------------------</chunk>
+        <newline />
+        <chunk>Date: @DateTime.Now.ToString()</chunk>
+        <newline />
+    </paragraph>
+    
+    <newline />
+    <newline />
+    
+    <paragraph>
+        <chunk font="Arial"  size="20.0" >                                    Result Card</chunk>
+        <newline />
+        <newline />
+    </paragraph>
+    
+    <paragraph>
+        @foreach (var item in Model)
+        {
+            <list numbered="false" symbolindent="20" listsymbol="" first="-2" font="Helvetica" size="20.0" fontstyle="normal">
+                <listitem leading="18.0" font="unknown" align="Default" indentationleft="20.0">Student Details</listitem>
+                <list numbered="false" symbolindent="10" listsymbol="" indentationleft="20.0" font="Helvetica" size="8.0">
+                    <listitem leading="18.0" font="unknown" align="Default" indentationleft="10.0" >Name           :  @Html.DisplayFor(modelItem => item.Student.StudentName)</listitem>
+                    <listitem leading="18.0" font="unknown" align="Default" indentationleft="10.0" >Email           :  @Html.DisplayFor(modelItem => item.Student.StudentEmail)</listitem>
+                    <listitem leading="18.0" font="unknown" align="Default" indentationleft="10.0" >Department  :  @Html.DisplayFor(modelItem => item.Student.Department.DepartmentName)</listitem>
+                </list>
+            </list>
+            break;
+        }
+        
+    </paragraph>
+    
+    <newline/>
+    <newline/>
+    <paragraph>
+        <chunk indentationleft="48.0"  font="Helvetica" > Result Details </chunk>
+        <newline/>
+    </paragraph>
+    
+    <table leading="18.0" width="80%" cellpadding="0.5" cellspacing="0.5" widths="30;70" borderwidth="1.0" left="false" right="false" top="true" bottom="true" >
+         <row>
+             <cell borderwidth="1.0" left="false" right="false" top="true" bottom="true">
+                 <chunk>Course Code</chunk>
+             </cell>
+             <cell borderwidth="1.0" left="false" right="false" top="true" bottom="true">
+                 <chunk>Course Name</chunk>
+             </cell>
+             <cell borderwidth="1.0" left="false" right="false" top="true" bottom="true">
+                 <chunk>Grade Awarded</chunk>
+             </cell>
+        </row>
+    
+    @foreach (var item in Model)
+    {
+        <row>
+            <cell >
+                <chunk>@Html.DisplayFor(modelItem=>item.Course.CourseCode)</chunk>
+            </cell>
+            <cell >
+                <chunk>@Html.DisplayFor(modelItem=>item.Course.CourseName)</chunk>
+            </cell>
+            <cell >
+                 <chunk>@Html.DisplayFor(modelItem=>item.Grade.GradeCode) </chunk>  
+            </cell>
+        </row>
+        
+    }    
+    </table> 
+    
+    <newline />
+    <newline />
+    <newline />
+    <newline />
+    <chunk>Authorized Signature</chunk>   
+</itext>

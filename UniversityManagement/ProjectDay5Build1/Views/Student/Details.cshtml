@@ -1,0 +1,64 @@
+﻿@model ProjectDay5Build1.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Student</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentContactNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentContactNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentRegistrationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentRegistrationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudentRegistrationNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudentRegistrationNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DepartmentCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DepartmentCode)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StudentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
