@@ -127,7 +127,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 3,
-                            TeacherEmail = "syedkabir@seu.bd",
+                            TeacherEmail = "syedkabir@abc.bd",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -138,7 +138,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 4,
-                            TeacherEmail = "shahriar_manzoor@yahoo.com",
+                            TeacherEmail = "shahriar_manzoor@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -149,7 +149,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 4,
-                            TeacherEmail = "ashiq_rahman@yahoo.com",
+                            TeacherEmail = "ashiq_rahman@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -160,7 +160,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 4,
-                            TeacherEmail = "jolly_csdu@yahoo.com",
+                            TeacherEmail = "jolly_csdu@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -171,7 +171,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 4,
-                            TeacherEmail = "kmhasan@gmail.com",
+                            TeacherEmail = "kmhasan@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -182,7 +182,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 5,
-                            TeacherEmail = "ashraful@seu.ac.bd",
+                            TeacherEmail = "ashraful@abc.bd",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -193,7 +193,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 5,
-                            TeacherEmail = "lifa_ashraf@yahoo.com",
+                            TeacherEmail = "lifa_ashraf@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -204,7 +204,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 5,
-                            TeacherEmail = "nafisasiddika@gmail.com",
+                            TeacherEmail = "nafisasiddika@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -215,7 +215,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 5,
-                            TeacherEmail = "md.rakibul_hasan@yahoo.com",
+                            TeacherEmail = "md.rakibul_hasan@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
@@ -237,7 +237,7 @@ namespace ProjectDay5Build1.Models
                             TeacherCreditToBeTaken = 12,
                             DepartmentId = 1,
                             DesignationId = 5,
-                            TeacherEmail = "raselsh023@yahoo.com",
+                            TeacherEmail = "raselsh023@abc.com",
                             TeacherRemainingCredit =  12
                         },
                     new Teacher
